@@ -32,10 +32,37 @@
     --creme: #FBF8EF;
     --laranja: #E8863C;
     --texto: #22301B;
+    --card-bg: #fff;
+    --card-borda: #E9E2CE;
+    --card-borda-suave: #F0EBDA;
+    --texto-suave: #4A5A44;
+    --texto-fraco: #8A8564;
+    --welcome-bg-1: #FFFDF6;
+    --welcome-bg-2: #F4F8EC;
+    --footer-bg: #1F3D1B;
+    --footer-texto: #C9DDBE;
     box-sizing: border-box;
     padding-top: env(safe-area-inset-top, 0px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
+
+  /* 🌙 MODO ESCURO */
+  html[data-tema="escuro"]{
+    --creme: #12180F;
+    --texto: #E8EFE2;
+    --verde: #8BC53F;
+    --verde-escuro: #D9EAC9;
+    --card-bg: #1B231A;
+    --card-borda: #2A3527;
+    --card-borda-suave: #232C1F;
+    --texto-suave: #B6C4AC;
+    --texto-fraco: #8FA184;
+    --welcome-bg-1: #182016;
+    --welcome-bg-2: #1F2A1C;
+    --footer-bg: #0B1008;
+    --footer-texto: #A7BD98;
+  }
+
   *{ box-sizing:inherit; margin:0; padding:0; }
   html{ scroll-padding-top: env(safe-area-inset-top, 0px); }
   body{
@@ -43,6 +70,7 @@
     color: var(--texto);
     background: var(--creme);
     line-height:1.55;
+    transition: background .3s ease, color .3s ease;
   }
   h1,h2,.brand{ font-family:'Fraunces', serif; }
   .wrap{ max-width:640px; margin:0 auto; padding:0 24px; }
@@ -50,6 +78,18 @@
   header{
     background: linear-gradient(160deg, var(--verde-escuro), var(--verde));
     color:#fff; padding:26px 0 56px; position:relative; overflow:hidden;
+    transition: background .3s ease;
+  }
+  /* No modo escuro, o header precisa de contraste diferente */
+  html[data-tema="escuro"] header{
+    background: linear-gradient(160deg, #0E1A0B, #2E4A1F);
+  }
+  html[data-tema="escuro"] header h1,
+  html[data-tema="escuro"] header p{ color:#E8EFE2; }
+  html[data-tema="escuro"] .brand{ color:#E8EFE2; }
+
+  .topbar{
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
   }
   .brand{
     display:flex; align-items:center; gap:12px;
@@ -67,10 +107,35 @@
   }
   .brand .mark{
     width:54px; height:54px; border-radius:50%;
-    background: var(--lima); color:var(--verde-escuro);
+    background: var(--lima); color:#1F3D1B;
     display:flex; align-items:center; justify-content:center;
     font-weight:800; font-size:20px; font-family:'Poppins',sans-serif;
     flex:none;
+  }
+
+  /* --- BOTÃO DE TEMA --- */
+  .theme-toggle{
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.35);
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    font-size: 19px;
+    cursor: pointer;
+    flex: none;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s ease, transform .1s ease, border-color .2s ease;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .theme-toggle:hover{
+    background: rgba(255,255,255,0.22);
+    border-color: rgba(255,255,255,0.55);
+  }
+  .theme-toggle:active{ transform: scale(0.94); }
+  .theme-toggle:focus-visible{
+    outline: 2px solid var(--lima);
+    outline-offset: 2px;
   }
 
   header h1{
@@ -116,12 +181,13 @@
 
   /* --- SEÇÃO DE BOAS-VINDAS --- */
   .welcome{
-    background: linear-gradient(160deg, #FFFDF6, #F4F8EC);
-    border: 1px solid #E9E2CE;
+    background: linear-gradient(160deg, var(--welcome-bg-1), var(--welcome-bg-2));
+    border: 1px solid var(--card-borda);
     border-radius:18px;
     padding:26px 24px;
     position:relative;
     overflow:hidden;
+    transition: background .3s ease, border-color .3s ease;
   }
   .welcome::before{
     content:"";
@@ -140,30 +206,32 @@
   }
   .welcome p{
     font-size:14.5px;
-    color:#3D5033;
+    color:var(--texto-suave);
     margin-top:12px;
     line-height:1.7;
   }
 
   .cards{ display:grid; gap:12px; grid-template-columns:1fr 1fr; }
   .card{
-    background:#fff; border:1px solid #E9E2CE; border-radius:14px;
+    background:var(--card-bg); border:1px solid var(--card-borda); border-radius:14px;
     padding:16px; text-align:center;
+    transition: background .3s ease, border-color .3s ease;
   }
   .card .ico{ font-size:24px; margin-bottom:6px; }
   .card b{ font-size:14px; color:var(--verde-escuro); display:block; }
 
   .hours-box{
-    background:#fff; border:1px solid #E9E2CE; border-radius:16px; padding:6px 22px;
+    background:var(--card-bg); border:1px solid var(--card-borda); border-radius:16px; padding:6px 22px;
+    transition: background .3s ease, border-color .3s ease;
   }
   .hours-row{
     display:flex; justify-content:space-between; padding:14px 0;
-    border-top:1px solid #F0EBDA; font-size:14.5px;
+    border-top:1px solid var(--card-borda-suave); font-size:14.5px;
   }
   .hours-row:first-child{ border-top:none; }
   .hours-row b{ color:var(--verde-escuro); }
   .hours-row.hoje{
-    background: #F7F9F2;
+    background: rgba(139, 197, 63, 0.1);
     margin: 0 -22px;
     padding-left: 22px; padding-right: 22px;
     font-weight: 600;
@@ -174,18 +242,18 @@
     font-size: 12px;
     font-weight: 600;
   }
-  .hours-note{ font-size:12px; color:#8A8564; margin-top:10px; padding-bottom:14px; }
+  .hours-note{ font-size:12px; color:var(--texto-fraco); margin-top:10px; padding-bottom:14px; }
 
   .delivery-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
   .delivery-pill{
-    background:#fff; border:1px solid #E9E2CE; border-radius:999px;
+    background:var(--card-bg); border:1px solid var(--card-borda); border-radius:999px;
     padding:9px 16px; font-size:13.5px; font-weight:600; color:var(--verde-escuro);
     text-decoration:none;
     transition: background .2s ease, border-color .2s ease, transform .1s ease;
     cursor:pointer;
   }
   a.delivery-pill:hover{
-    background:#F7F4E8;
+    background: rgba(139, 197, 63, 0.12);
     border-color: var(--verde);
   }
   a.delivery-pill:active{ transform: scale(0.97); }
@@ -193,21 +261,22 @@
   .contact-grid{ display:grid; gap:12px; }
   .contact-row{
     display:flex; gap:12px; align-items:flex-start;
-    background:#fff; border:1px solid #E9E2CE; border-radius:14px; padding:14px 16px;
+    background:var(--card-bg); border:1px solid var(--card-borda); border-radius:14px; padding:14px 16px;
     text-decoration:none; color:inherit;
+    transition: background .2s ease, border-color .2s ease;
   }
   a.contact-row{
     cursor:pointer;
     transition: background .2s ease, border-color .2s ease, transform .1s ease;
   }
   a.contact-row:hover{
-    background:#F7F4E8;
+    background: rgba(139, 197, 63, 0.1);
     border-color: var(--verde);
   }
   a.contact-row:active{ transform: scale(0.99); }
   .contact-row .ico{ flex:none; width:22px; text-align:center; color:var(--verde); font-size:17px; }
   .contact-row .txt b{ display:block; color:var(--verde-escuro); font-size:14.5px; }
-  .contact-row .txt span{ font-size:14px; color:#4A5A44; }
+  .contact-row .txt span{ font-size:14px; color:var(--texto-suave); }
 
   .cta{
     display:block; text-align:center;
@@ -222,7 +291,7 @@
     color:#fff; margin-top:10px; box-shadow:0 12px 26px rgba(221,42,123,0.28);
   }
   .cta.tertiary{
-    background:#fff; color:var(--verde-escuro);
+    background:var(--card-bg); color:var(--verde-escuro);
     border:2px solid var(--verde); box-shadow:none; margin-top:10px;
   }
 
@@ -254,11 +323,10 @@
     width: 30px; height: 30px;
     fill: #fff;
   }
-  /* Rótulo opcional que aparece no hover (desktop) */
   .whatsapp-float .label{
     position: absolute;
     right: 70px;
-    background: #fff;
+    background: var(--card-bg);
     color: var(--verde-escuro);
     font-size: 13px;
     font-weight: 600;
@@ -280,29 +348,33 @@
     70%{ box-shadow: 0 10px 24px rgba(37,211,102,0.45), 0 0 0 14px rgba(37,211,102,0); }
     100%{ box-shadow: 0 10px 24px rgba(37,211,102,0.45), 0 0 0 0 rgba(37,211,102,0); }
   }
-  /* Em telas muito pequenas, esconde o rótulo */
   @media (max-width: 480px){
     .whatsapp-float .label{ display:none; }
   }
 
   footer{
-    background: var(--verde-escuro); color:#C9DDBE;
+    background: var(--footer-bg); color:var(--footer-texto);
     padding:26px 0 calc(26px + env(safe-area-inset-bottom,0px));
     text-align:center; font-size:12.5px;
+    transition: background .3s ease, color .3s ease;
   }
   footer a{ color:#fff; }
+  html[data-tema="escuro"] footer a{ color: #D9EAC9; }
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap">
-    <div class="brand">
-      <div class="logo-box">
-        <img src="https://raw.githubusercontent.com/andradefelipe2/verdim-site/main/og-image.jpg" alt="Logo Verdim Hortifruti"
-             onerror="this.parentElement.outerHTML='&lt;span class=\'mark\'&gt;V&lt;/span&gt;'">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo-box">
+          <img src="https://raw.githubusercontent.com/andradefelipe2/verdim-site/main/og-image.jpg" alt="Logo Verdim Hortifruti"
+               onerror="this.parentElement.outerHTML='&lt;span class=\'mark\'&gt;V&lt;/span&gt;'">
+        </div>
+        Verdim Hortifruti
       </div>
-      Verdim Hortifruti
+      <button id="themeToggle" class="theme-toggle" aria-label="Alternar modo claro/escuro" title="Alternar modo claro/escuro">🌙</button>
     </div>
 
     <h1>Fresquinho todo dia, há 9 anos no Limão</h1>
@@ -356,7 +428,7 @@
     <section>
       <div class="kicker">Sem sair de casa</div>
       <h2>Peça pelo delivery</h2>
-      <p style="margin-bottom:0; color:#4A5A44; font-size:14.5px;">Disponível também nos principais apps de entrega:</p>
+      <p style="margin-bottom:0; color:var(--texto-suave); font-size:14.5px;">Disponível também nos principais apps de entrega:</p>
       <div class="delivery-row">
         <a class="delivery-pill" href="https://www.ifood.com.br/delivery/sao-paulo-sp/verdim-hortifruti-limao/90f9587e-78b0-41fb-b2fd-e6439a672caa?UTM_Medium=share" target="_blank" rel="noopener">iFood</a>
         <a class="delivery-pill" href="https://oia.99app.com/dlp9/1fL2UR?share_media=WHATSAPP" target="_blank" rel="noopener">99Food</a>
@@ -407,6 +479,37 @@
 </a>
 
 <script>
+  /* ---------- MODO CLARO / ESCURO ---------- */
+  const html = document.documentElement;
+  const toggle = document.getElementById('themeToggle');
+
+  function aplicarTema(tema){
+    if (tema === 'escuro'){
+      html.setAttribute('data-tema', 'escuro');
+      toggle.textContent = '☀️';
+      toggle.setAttribute('aria-label', 'Mudar para modo claro');
+    } else {
+      html.removeAttribute('data-tema');
+      toggle.textContent = '🌙';
+      toggle.setAttribute('aria-label', 'Mudar para modo escuro');
+    }
+  }
+
+  // 1) Preferência salva pelo usuário
+  const temaSalvo = localStorage.getItem('verdim-tema');
+  // 2) Preferência do sistema
+  const temaSistema = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'escuro' : 'claro';
+
+  aplicarTema(temaSalvo || temaSistema);
+
+  toggle.addEventListener('click', () => {
+    const atual = html.getAttribute('data-tema') === 'escuro' ? 'escuro' : 'claro';
+    const novo = atual === 'escuro' ? 'claro' : 'escuro';
+    aplicarTema(novo);
+    localStorage.setItem('verdim-tema', novo);
+  });
+
+  /* ---------- STATUS ABERTO / FECHADO ---------- */
   const HORARIOS = {
     0: { abre: 8*60, fecha: 14*60 },
     1: { abre: 7*60, fecha: 20*60 + 30 },
