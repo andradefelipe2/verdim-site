@@ -114,6 +114,37 @@
   .kicker{ color:var(--verde); font-weight:600; font-size:13px; letter-spacing:.3px; }
   h2{ font-size:23px; margin-top:6px; margin-bottom:18px; color:var(--verde-escuro); }
 
+  /* --- SEÇÃO DE BOAS-VINDAS --- */
+  .welcome{
+    background: linear-gradient(160deg, #FFFDF6, #F4F8EC);
+    border: 1px solid #E9E2CE;
+    border-radius:18px;
+    padding:26px 24px;
+    position:relative;
+    overflow:hidden;
+  }
+  .welcome::before{
+    content:"";
+    position:absolute;
+    top:-40px; right:-40px;
+    width:130px; height:130px;
+    background: radial-gradient(circle, rgba(139,197,63,0.22), transparent 70%);
+    border-radius:50%;
+    pointer-events:none;
+  }
+  .welcome h2{
+    margin-top:0;
+    font-size:21px;
+    color:var(--verde-escuro);
+    line-height:1.3;
+  }
+  .welcome p{
+    font-size:14.5px;
+    color:#3D5033;
+    margin-top:12px;
+    line-height:1.7;
+  }
+
   .cards{ display:grid; gap:12px; grid-template-columns:1fr 1fr; }
   .card{
     background:#fff; border:1px solid #E9E2CE; border-radius:14px;
@@ -195,6 +226,65 @@
     border:2px solid var(--verde); box-shadow:none; margin-top:10px;
   }
 
+  /* --- BOTÃO FLUTUANTE DO WHATSAPP --- */
+  .whatsapp-float{
+    position: fixed;
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    right: 20px;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #25D366;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgba(37,211,102,0.45);
+    z-index: 999;
+    transition: transform .2s ease, box-shadow .2s ease;
+    animation: whatsPulse 2.4s infinite;
+  }
+  .whatsapp-float:hover{
+    transform: scale(1.08);
+    box-shadow: 0 14px 30px rgba(37,211,102,0.55);
+  }
+  .whatsapp-float:active{ transform: scale(0.96); }
+  .whatsapp-float svg{
+    width: 30px; height: 30px;
+    fill: #fff;
+  }
+  /* Rótulo opcional que aparece no hover (desktop) */
+  .whatsapp-float .label{
+    position: absolute;
+    right: 70px;
+    background: #fff;
+    color: var(--verde-escuro);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 10px;
+    white-space: nowrap;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    opacity: 0;
+    transform: translateX(6px);
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+  }
+  .whatsapp-float:hover .label{
+    opacity: 1;
+    transform: translateX(0);
+  }
+  @keyframes whatsPulse{
+    0%{ box-shadow: 0 10px 24px rgba(37,211,102,0.45), 0 0 0 0 rgba(37,211,102,0.5); }
+    70%{ box-shadow: 0 10px 24px rgba(37,211,102,0.45), 0 0 0 14px rgba(37,211,102,0); }
+    100%{ box-shadow: 0 10px 24px rgba(37,211,102,0.45), 0 0 0 0 rgba(37,211,102,0); }
+  }
+  /* Em telas muito pequenas, esconde o rótulo */
+  @media (max-width: 480px){
+    .whatsapp-float .label{ display:none; }
+  }
+
   footer{
     background: var(--verde-escuro); color:#C9DDBE;
     padding:26px 0 calc(26px + env(safe-area-inset-bottom,0px));
@@ -227,6 +317,19 @@
 
 <main>
   <div class="wrap">
+
+    <section>
+      <div class="welcome">
+        <div class="kicker">Seja bem-vindo(a)</div>
+        <h2>Bem-vindo(a) ao Verdim Hortifruti!</h2>
+        <p>
+          Aqui no Verdim, a nossa missão é levar até a sua mesa o que há de mais fresco,
+          saudável e saboroso todos os dias. Acreditamos que uma alimentação rica em
+          nutrientes é a base para uma vida cheia de energia e bem-estar para você e
+          para toda a sua família.
+        </p>
+      </div>
+    </section>
 
     <section>
       <div class="kicker">O que encontrar</div>
@@ -294,6 +397,14 @@
     <a href="mailto:contato@verdimhortifruti.com.br">contato@verdimhortifruti.com.br</a>
   </div>
 </footer>
+
+<!-- BOTÃO FLUTUANTE DO WHATSAPP -->
+<a class="whatsapp-float" href="https://wa.me/5511940011958" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp">
+  <span class="label">Fale conosco no WhatsApp</span>
+  <svg viewBox="0 0 32 32" aria-hidden="true">
+    <path d="M16.004 3C9.383 3 4.004 8.379 4.004 15c0 2.115.553 4.184 1.604 6.008L4 29l8.184-1.585A11.94 11.94 0 0 0 16.004 27C22.625 27 28 21.621 28 15S22.625 3 16.004 3zm0 21.75c-1.855 0-3.673-.499-5.26-1.442l-.377-.223-4.854.94.972-4.73-.246-.389A9.704 9.704 0 0 1 6.255 15c0-5.383 4.38-9.75 9.749-9.75 5.37 0 9.746 4.367 9.746 9.75s-4.376 9.75-9.746 9.75zm5.34-7.303c-.293-.146-1.732-.854-2.001-.951-.269-.098-.464-.146-.659.146-.195.293-.755.951-.926 1.147-.17.195-.341.22-.634.073-.293-.146-1.239-.456-2.359-1.455-.871-.777-1.459-1.738-1.63-2.031-.17-.293-.018-.451.128-.597.13-.13.293-.341.44-.512.146-.17.195-.293.293-.488.098-.195.049-.366-.024-.512-.073-.146-.659-1.585-.903-2.17-.237-.57-.479-.492-.659-.501l-.561-.01c-.195 0-.512.073-.78.366-.269.293-1.024 1.001-1.024 2.44 0 1.44 1.049 2.83 1.195 3.025.146.195 2.064 3.15 5.001 4.417.699.302 1.244.482 1.67.616.702.223 1.341.192 1.846.117.563-.084 1.732-.708 1.977-1.392.244-.683.244-1.269.171-1.392-.073-.122-.269-.195-.562-.341z"/>
+  </svg>
+</a>
 
 <script>
   const HORARIOS = {
