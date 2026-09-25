@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Verdim Hortifruti — 9 anos no Limão</title>
+
+<!-- Open Graph / Redes sociais -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Verdim Hortifruti — 9 anos no Limão">
+<meta property="og:description" content="Hortifruti, mercearia, vinhos e linha praticidade. Peça pelo delivery ou venha nos visitar no Limão, Zona Norte de SP.">
+<meta property="og:image" content="og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://verdimhortifruti.com.br/">
+<meta property="og:site_name" content="Verdim Hortifruti">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Verdim Hortifruti — 9 anos no Limão">
+<meta name="twitter:description" content="Hortifruti, mercearia, vinhos e linha praticidade. Peça pelo delivery ou venha nos visitar no Limão, Zona Norte de SP.">
+<meta name="twitter:image" content="og-image.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde-escuro: #1F3D1B;
+    --verde: #4C7A2E;
+    --lima: #8BC53F;
+    --creme: #FBF8EF;
+    --laranja: #E8863C;
+    --texto: #22301B;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *{ box-sizing:inherit; margin:0; padding:0; }
+  html{ scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body{
+    font-family:'Poppins', sans-serif;
+    color: var(--texto);
+    background: var(--creme);
+    line-height:1.55;
+  }
+  h1,h2,.brand{ font-family:'Fraunces', serif; }
+  .wrap{ max-width:640px; margin:0 auto; padding:0 24px; }
+
+  header{
+    background: linear-gradient(160deg, var(--verde-escuro), var(--verde));
+    color:#fff; padding:26px 0 56px; position:relative; overflow:hidden;
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+    font-size:20px; font-weight:700;
+  }
+  .brand .logo-box{
+    width:54px; height:54px; border-radius:50%;
+    background:#fff;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+    flex:none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  .brand .logo-box img{
+    width:100%; height:100%;
+    object-fit:cover;
+    transform: scale(1.15);
+  }
+  .brand .mark{
+    width:54px; height:54px; border-radius:50%;
+    background: var(--lima); color:var(--verde-escuro);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:20px; font-family:'Poppins',sans-serif;
+    flex:none;
+  }
+
+  header h1{
+    font-size: clamp(28px, 8vw, 40px); font-weight:700; line-height:1.18;
+    margin-top:22px; max-width:13ch;
+  }
+  header p{ margin-top:14px; font-size:16px; color:#E4F0DC; max-width:38ch; }
+
+  .status-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:6px 14px; border-radius:999px;
+    font-size:13px; font-weight:600;
+    margin-top:16px;
+    transition: background .3s ease, color .3s ease;
+  }
+  .status-badge .dot{
+    width:9px; height:9px; border-radius:50%;
+    flex:none;
+    animation: pulse 1.8s infinite;
+  }
+  .status-badge.aberto{
+    background: rgba(139, 197, 63, 0.18);
+    border: 1px solid rgba(139, 197, 63, 0.5);
+    color: #D7F0A8;
+  }
+  .status-badge.aberto .dot{ background: #8BC53F; box-shadow: 0 0 0 0 rgba(139,197,63,0.6); }
+  .status-badge.fechado{
+    background: rgba(232, 134, 60, 0.18);
+    border: 1px solid rgba(232, 134, 60, 0.5);
+    color: #FBD8B8;
+  }
+  .status-badge.fechado .dot{ background: #E8863C; animation: none; }
+  @keyframes pulse{
+    0%{ box-shadow: 0 0 0 0 rgba(139,197,63,0.6); }
+    70%{ box-shadow: 0 0 0 8px rgba(139,197,63,0); }
+    100%{ box-shadow: 0 0 0 0 rgba(139,197,63,0); }
+  }
+
+  main{ padding:44px 0 10px; }
+  section{ margin-bottom:44px; }
+  .kicker{ color:var(--verde); font-weight:600; font-size:13px; letter-spacing:.3px; }
+  h2{ font-size:23px; margin-top:6px; margin-bottom:18px; color:var(--verde-escuro); }
+
+  .cards{ display:grid; gap:12px; grid-template-columns:1fr 1fr; }
+  .card{
+    background:#fff; border:1px solid #E9E2CE; border-radius:14px;
+    padding:16px; text-align:center;
+  }
+  .card .ico{ font-size:24px; margin-bottom:6px; }
+  .card b{ font-size:14px; color:var(--verde-escuro); display:block; }
+
+  .hours-box{
+    background:#fff; border:1px solid #E9E2CE; border-radius:16px; padding:6px 22px;
+  }
+  .hours-row{
+    display:flex; justify-content:space-between; padding:14px 0;
+    border-top:1px solid #F0EBDA; font-size:14.5px;
+  }
+  .hours-row:first-child{ border-top:none; }
+  .hours-row b{ color:var(--verde-escuro); }
+  .hours-row.hoje{
+    background: #F7F9F2;
+    margin: 0 -22px;
+    padding-left: 22px; padding-right: 22px;
+    font-weight: 600;
+  }
+  .hours-row.hoje span::after{
+    content: " • hoje";
+    color: var(--verde);
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .hours-note{ font-size:12px; color:#8A8564; margin-top:10px; padding-bottom:14px; }
+
+  .delivery-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+  .delivery-pill{
+    background:#fff; border:1px solid #E9E2CE; border-radius:999px;
+    padding:9px 16px; font-size:13.5px; font-weight:600; color:var(--verde-escuro);
+    text-decoration:none;
+    transition: background .2s ease, border-color .2s ease, transform .1s ease;
+    cursor:pointer;
+  }
+  a.delivery-pill:hover{
+    background:#F7F4E8;
+    border-color: var(--verde);
+  }
+  a.delivery-pill:active{ transform: scale(0.97); }
+
+  .contact-grid{ display:grid; gap:12px; }
+  .contact-row{
+    display:flex; gap:12px; align-items:flex-start;
+    background:#fff; border:1px solid #E9E2CE; border-radius:14px; padding:14px 16px;
+    text-decoration:none; color:inherit;
+  }
+  a.contact-row{
+    cursor:pointer;
+    transition: background .2s ease, border-color .2s ease, transform .1s ease;
+  }
+  a.contact-row:hover{
+    background:#F7F4E8;
+    border-color: var(--verde);
+  }
+  a.contact-row:active{ transform: scale(0.99); }
+  .contact-row .ico{ flex:none; width:22px; text-align:center; color:var(--verde); font-size:17px; }
+  .contact-row .txt b{ display:block; color:var(--verde-escuro); font-size:14.5px; }
+  .contact-row .txt span{ font-size:14px; color:#4A5A44; }
+
+  .cta{
+    display:block; text-align:center;
+    background: #25D366; color:#fff;
+    font-weight:700; font-size:16.5px;
+    padding:15px 20px; border-radius:14px;
+    text-decoration:none; margin-top:16px;
+    box-shadow:0 12px 26px rgba(37,211,102,0.32);
+  }
+  .cta.secondary{
+    background: linear-gradient(135deg,#F58529,#DD2A7B,#8134AF);
+    color:#fff; margin-top:10px; box-shadow:0 12px 26px rgba(221,42,123,0.28);
+  }
+  .cta.tertiary{
+    background:#fff; color:var(--verde-escuro);
+    border:2px solid var(--verde); box-shadow:none; margin-top:10px;
+  }
+
+  footer{
+    background: var(--verde-escuro); color:#C9DDBE;
+    padding:26px 0 calc(26px + env(safe-area-inset-bottom,0px));
+    text-align:center; font-size:12.5px;
+  }
+  footer a{ color:#fff; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <div class="logo-box">
+        <img src="logo-verdim.png" alt="Logo Verdim Hortifruti"
+             onerror="this.parentElement.outerHTML='&lt;span class=\'mark\'&gt;V&lt;/span&gt;'">
+      </div>
+      Verdim Hortifruti
+    </div>
+
+    <h1>Fresquinho todo dia, há 9 anos no Limão</h1>
+    <p>Hortifruti, mercearia, vinhos e linha praticidade — tudo num só lugar, pertinho de você.</p>
+
+    <div id="statusBadge" class="status-badge fechado">
+      <span class="dot"></span>
+      <span id="statusText">Verificando horário...</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <section>
+      <div class="kicker">O que encontrar</div>
+      <h2>Nosso mix</h2>
+      <div class="cards">
+        <div class="card"><div class="ico">🥬</div><b>Hortifruti</b></div>
+        <div class="card"><div class="ico">🛒</div><b>Mercearia</b></div>
+        <div class="card"><div class="ico">🍷</div><b>Vinhos</b></div>
+        <div class="card"><div class="ico">⏱️</div><b>Linha Praticidade</b></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="kicker">Quando visitar</div>
+      <h2>Horário de funcionamento</h2>
+      <div class="hours-box">
+        <div class="hours-row" data-dia="1,2,3,4,5"><span>Segunda a sexta</span><b>07h às 20h30</b></div>
+        <div class="hours-row" data-dia="6"><span>Sábado</span><b>08h às 20h30</b></div>
+        <div class="hours-row" data-dia="0"><span>Domingo e feriado</span><b>08h às 14h</b></div>
+      </div>
+      <div class="hours-note">*Feriados aos sábados podem sofrer alteração de horário.</div>
+    </section>
+
+    <section>
+      <div class="kicker">Sem sair de casa</div>
+      <h2>Peça pelo delivery</h2>
+      <p style="margin-bottom:0; color:#4A5A44; font-size:14.5px;">Disponível também nos principais apps de entrega:</p>
+      <div class="delivery-row">
+        <a class="delivery-pill" href="https://www.ifood.com.br/delivery/sao-paulo-sp/verdim-hortifruti-limao/90f9587e-78b0-41fb-b2fd-e6439a672caa?UTM_Medium=share" target="_blank" rel="noopener">iFood</a>
+        <a class="delivery-pill" href="https://oia.99app.com/dlp9/1fL2UR?share_media=WHATSAPP" target="_blank" rel="noopener">99Food</a>
+        <a class="delivery-pill" href="https://url-eu.mykeeta.com/7Ug6Rcdz" target="_blank" rel="noopener">Keeta</a>
+      </div>
+    </section>
+
+    <section>
+      <div class="kicker">Fale com a gente</div>
+      <h2>Contato</h2>
+      <div class="contact-grid">
+        <a class="contact-row" href="https://www.google.com/maps/dir/-23.5342112,-46.6617001/Verdim+Hortifruti+-+Loja+Lim%C3%A3o,+Av.+Dep.+Em%C3%ADlio+Carlos,+792+-+Lim%C3%A3o,+S%C3%A3o+Paulo+-+SP,+02722-100/@-23.5161931,-46.6894621,14z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x94cef82840278737:0x54594fed98486580!2m2!1d-46.6754013!2d-23.4982565?entry=ttu&g_ep=EgoyMDI2MDkyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">
+          <div class="ico">📍</div>
+          <div class="txt">
+            <b>Endereço</b>
+            <span>Av. Dep. Emílio Carlos, 792 — Limão, São Paulo</span>
+          </div>
+        </a>
+        <a class="contact-row" href="mailto:contato@verdimhortifruti.com.br">
+          <div class="ico">✉️</div>
+          <div class="txt">
+            <b>E-mail</b>
+            <span>contato@verdimhortifruti.com.br</span>
+          </div>
+        </a>
+      </div>
+      <a class="cta" href="https://wa.me/5511940011958" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+      <a class="cta secondary" href="https://www.instagram.com/verdim.hortifruti/?hl=pt" target="_blank" rel="noopener">Ver no Instagram @verdim.hortifruti</a>
+      <a class="cta tertiary" href="mailto:contato@verdimhortifruti.com.br">Enviar e-mail</a>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    Verdim Hortifruti — Bairro do Limão, São Paulo<br>
+    <a href="mailto:contato@verdimhortifruti.com.br">contato@verdimhortifruti.com.br</a>
+  </div>
+</footer>
+
+<script>
+  const HORARIOS = {
+    0: { abre: 8*60, fecha: 14*60 },
+    1: { abre: 7*60, fecha: 20*60 + 30 },
+    2: { abre: 7*60, fecha: 20*60 + 30 },
+    3: { abre: 7*60, fecha: 20*60 + 30 },
+    4: { abre: 7*60, fecha: 20*60 + 30 },
+    5: { abre: 7*60, fecha: 20*60 + 30 },
+    6: { abre: 8*60, fecha: 20*60 + 30 }
+  };
+
+  function atualizarStatus(){
+    const agora = new Date();
+    const dia = agora.getDay();
+    const minutos = agora.getHours() * 60 + agora.getMinutes();
+
+    const horarioHoje = HORARIOS[dia];
+    const badge = document.getElementById('statusBadge');
+    const texto = document.getElementById('statusText');
+
+    document.querySelectorAll('.hours-row').forEach(row => {
+      const dias = row.dataset.dia.split(',').map(Number);
+      row.classList.toggle('hoje', dias.includes(dia));
+    });
+
+    if (minutos >= horarioHoje.abre && minutos < horarioHoje.fecha){
+      badge.classList.remove('fechado');
+      badge.classList.add('aberto');
+      texto.textContent = 'Aberto agora · fecha às ' + formatarHora(horarioHoje.fecha);
+    } else {
+      badge.classList.remove('aberto');
+      badge.classList.add('fechado');
+      if (minutos < horarioHoje.abre){
+        texto.textContent = 'Fechado · abre hoje às ' + formatarHora(horarioHoje.abre);
+      } else {
+        const amanha = (dia + 1) % 7;
+        const abreAmanha = HORARIOS[amanha].abre;
+        texto.textContent = 'Fechado · abre amanhã às ' + formatarHora(abreAmanha);
+      }
+    }
+  }
+
+  function formatarHora(min){
+    const h = Math.floor(min / 60);
+    const m = min % 60;
+    return String(h).padStart(2,'0') + 'h' + (m ? String(m).padStart(2,'0') : '');
+  }
+
+  atualizarStatus();
+  setInterval(atualizarStatus, 30000);
+</script>
+
+</body>
+</html>
